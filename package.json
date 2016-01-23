@@ -1,0 +1,23 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "description": "MIL Amazon Review Scrapper ",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhishek",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "errorhandler": "^1.4.3",
+    "express": "^4.13.4",
+    "fs": "0.0.2",
+    "http-server": "^0.8.5",
+    "jade": "^1.11.0",
+    "readline-sync": "^1.2.22",
+    "sleep": "^3.0.0",
+    "string-format": "^0.5.0",
+    "x-ray": "^2.0.3"
+  }
+}

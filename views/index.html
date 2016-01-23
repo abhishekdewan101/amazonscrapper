@@ -1,0 +1,56 @@
+<html>
+  <head>
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <h1>MIL Amazon Scrapper</h1>
+      </div>
+
+      <div class="row">
+        <div class="container">
+          <form  role="form" action="/submit" method="post" enctype="application/x-www-form-urlencoded">
+
+            <div class="form-group">
+              <label for="ASIN">ASIN:</label>
+              <input type="text" class="form-control" id="ASIN" name="ASIN">
+            </div>
+
+            <div class="form-group">
+              <label for="FILENAME">FILENAME:</label>
+              <input type="text" class="form-control" id="FILENAME" name="FILENAME">
+            </div>
+
+            <div class="form-group">
+              <label for="PAGES">PAGES:</label>
+              <input type="text" class="form-control" id="PAGES" name="PAGES">
+            </div>
+
+            <div class="form-group">
+              <label for="TYPE">TYPE OF FILE: 1 for TXT or 2 for CSV</label>
+              <input type="text" class="form-control" id="TYPE" name="TYPE">
+            </div>
+
+            <div class="form-group">
+              <label for="STARFILTER">Filter by rating: 1 for YES or 2 for NO</label>
+              <input type="text" class="form-control" id="STARFILTER" name="STARFILTER">
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
