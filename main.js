@@ -9,7 +9,8 @@ var express = require('express'),
     bodyparser = require('body-parser')
     format = require('string-format')
     http = require('http-server')
-    scrapper = require('./scapper.js');
+    scrapper = require('./scapper.js'),
+    ip = require('ip');
 
 var app = express();
 
@@ -52,9 +53,9 @@ app.post("/submit",function(req,res){
 app.get("/status",function(req,res){
   var complete = 100;
   if(complete < 100){
-    res.render('status.jade',{percentage:complete+"%"});
+    res.render('status.jade',{percentage:complete+"%",localhost:ip.address()});
   }
   if(complete==100) {
-    res.redirect('http://localhost:8080/')
+    res.redirect('http://'+ip.address()+':8080/')
   }
 });
