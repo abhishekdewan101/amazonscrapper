@@ -31,7 +31,7 @@ app.set('view engine','jade');
 app.set('views',__dirname+'/views');
 
 app.listen(PORT_NO,function(){
-  console.log(format('MIL Amazon Scrapper is live on port number : {}',PORT_NO))
+  console.log(format('MIL Amazon Scrapper is live on {} and port number : {}',ip.address(),PORT_NO))
 });
 
 //setup sharing the files folder
@@ -44,14 +44,16 @@ app.get("/",function(req,res){
 });
 
 app.post("/submit",function(req,res){
+  res.redirect('/status');
   console.log(req.body.ASIN+" - "+req.body.FILENAME+" - "+req.body.PAGES+" - "+req.body.TYPE+" - "+req.body.STARFILTER);
   //Do something with the data you've just gotten
-  res.redirect('/status');
+  scrapper.init(req.body.ASIN,req.body.FILENAME,req.body.PAGES+" - "+req.body.TYPE,req.body.STARFILTER)
 });
 
 
 app.get("/status",function(req,res){
-  var complete = 100;
+  var complete = scrapper.status();
+  console.log(scrapper.status());
   if(complete < 100){
     res.render('status.jade',{percentage:complete+"%",localhost:ip.address()});
   }

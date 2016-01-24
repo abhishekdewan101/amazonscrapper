@@ -15,8 +15,10 @@ var ASIN = "",
     TYPE="",
     STARFILTER="";
 
+var percentageComplete = 0;
 
-module.exports = function Scapper(mAsin,mFilename,mPages,mType,mStarFilter){
+
+exports.init = function init(mAsin,mFilename,mPages,mType,mStarFilter){
     ASIN = mAsin;
     FILENAME = format("files/{}/",mFilename) +  mFilename;
     if (!fs.existsSync(format("files/{}/",mFilename))){
@@ -29,6 +31,9 @@ module.exports = function Scapper(mAsin,mFilename,mPages,mType,mStarFilter){
 
     console.log("[SCAPPER.JS] "+ASIN+"-"+FILENAME+"-"+PAGES+"-"+TYPE+"-"+STARFILTER);
     choosefiletype();
+}
+exports.status = function status(){
+  return percentageComplete;
 }
 
 function choosefiletype(){
@@ -58,14 +63,16 @@ function scrape_loop(filename,baseurl,pages){
       console.log(format("[DEBUG] loop is going through iteration number {}",i));
       var url = format(baseurl,ASIN,i);
       console.log(format("[DEBUG] Scrapping page number {}",i));
+      percentageComplete = (i/parseInt(pages))*100
       scrape(url,FILENAME);
+      console.log(getRandomDelay());
       sleep.sleep(getRandomDelay());
   }
   console.log(format('[DEBUG] Scrapper done scrapping comments for {}',filename));
 }
 
 function getRandomDelay(){
-  return Math.random()*(300-120) + 120;
+  return Math.floor(Math.random()*(300-120) + 120);
 }
 
 function scrape(url,file){
